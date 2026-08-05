@@ -58,12 +58,9 @@ export default function DamageShot() {
 
       {/* A legenda mora fora da foto: rótulo flutuando sobre a imagem some em
           tela estreita e brigaria com o próprio dano que quer apontar. */}
-      <ul className="grid grid-cols-1 divide-y divide-white/[0.06] border-t border-white/[0.08] xs:grid-cols-2 xs:divide-y-0">
-        {POINTS.map((point, i) => (
-          <li
-            key={point.n}
-            className={`flex items-center gap-2.5 px-4 py-3 sm:px-5 ${i % 2 === 0 ? 'xs:border-r xs:border-white/[0.06]' : ''} ${i > 1 ? 'xs:border-t xs:border-white/[0.06]' : ''}`}
-          >
+      <ul className="grid grid-cols-1 gap-x-6 gap-y-2.5 border-t border-white/[0.08] px-4 py-4 xs:grid-cols-2 sm:px-5">
+        {POINTS.map((point) => (
+          <li key={point.n} className="flex items-center gap-2.5">
             <span className="font-mono text-[0.65rem] font-bold text-leilo-stop">{point.n}</span>
             <span className="text-sm text-white/80">{point.label}</span>
           </li>
