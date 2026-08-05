@@ -7,7 +7,7 @@ import { FILOSOFIA } from '../../data/landing'
 
 export default function Filosofia() {
   return (
-    <section aria-labelledby="filosofia-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="filosofia-heading" className="py-16 sm:py-20 md:py-24">
       <Container className="max-w-4xl">
         <ChapterHead eyebrow={FILOSOFIA.eyebrow} title={FILOSOFIA.title} headingId="filosofia-heading" />
 

@@ -7,7 +7,7 @@ import { INVENTARIO } from '../../data/landing'
 
 export default function Inventario() {
   return (
-    <section aria-labelledby="inventario-heading" className="bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="inventario-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={INVENTARIO.eyebrow} title={INVENTARIO.title} headingId="inventario-heading" />
 

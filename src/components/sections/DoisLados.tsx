@@ -7,7 +7,7 @@ import { DOIS_LADOS } from '../../data/landing'
 
 export default function DoisLados() {
   return (
-    <section aria-labelledby="dois-lados-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="dois-lados-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={DOIS_LADOS.eyebrow} title={DOIS_LADOS.title} headingId="dois-lados-heading" />
 

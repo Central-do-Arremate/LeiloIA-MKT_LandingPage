@@ -11,7 +11,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section aria-labelledby="faq-heading" className="bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="faq-heading" className="py-16 sm:py-20 md:py-24">
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div>
           <ChapterHead eyebrow={FAQ.eyebrow} title={FAQ.title} headingId="faq-heading" titleMax="max-w-md" />

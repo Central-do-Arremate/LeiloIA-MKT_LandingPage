@@ -8,7 +8,32 @@ import { SIGNUP_URL } from '../../config/links'
 
 export default function CtaFinal() {
   return (
-    <section aria-labelledby="cta-final-heading" className="relative overflow-hidden bg-leilo-section py-20 sm:py-24 md:py-32">
+    <section aria-labelledby="cta-final-heading" className="relative overflow-hidden py-20 sm:py-24 md:py-32">
+      {/* O carro recuperado fecha o arco que abriu no lote batido lá em cima.
+          Fica rebaixado a fundo: a foto ambienta, quem carrega o CTA é o texto.
+          Recorte por máscara (não por gradiente de cor) porque o fundo da
+          página muda com o scroll. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent)',
+          maskImage: 'linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent)',
+        }}
+      >
+        <img
+          src="/assets/photos/carro-recuperado-1920.avif"
+          srcSet="/assets/photos/carro-recuperado-960.avif 960w, /assets/photos/carro-recuperado-1920.avif 1920w"
+          sizes="100vw"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="h-full w-full object-cover opacity-[0.22]"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(85%_75%_at_50%_45%,rgba(0,0,0,0.82),rgba(0,0,0,0.35)_70%,transparent)]" />
+      </div>
+
       <div className="pointer-events-none absolute -bottom-48 left-1/2 h-96 w-[42rem] max-w-full -translate-x-1/2 rounded-full bg-leilo-go/10 blur-[140px]" />
 
       <Container className="relative flex max-w-3xl flex-col items-center text-center">

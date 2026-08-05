@@ -3,7 +3,10 @@ import Hero from './components/sections/Hero'
 import Footer from './components/Footer'
 import CampaignWall from './components/CampaignWall'
 import MobileCtaBar from './components/MobileCtaBar'
+import PhotoBand from './components/PhotoBand'
+import ScrollBackdrop from './components/ScrollBackdrop'
 import { CAMPAIGN_DISABLED } from './config/campaign'
+import { TONE } from './config/tones'
 
 const ContaDoLote = lazy(() => import('./components/sections/ContaDoLote'))
 const Metodo = lazy(() => import('./components/sections/Metodo'))
@@ -25,33 +28,53 @@ const Manifesto = lazy(() => import('./components/sections/Manifesto'))
 const Fechamento = lazy(() => import('./components/sections/Fechamento'))
 const CtaFinal = lazy(() => import('./components/sections/CtaFinal'))
 
-function SectionFallback({ bg }: { bg: string }) {
-  return <div className={`h-[60vh] w-full ${bg}`} aria-hidden="true" />
+function SectionFallback() {
+  // Só reserva altura: a cor de fundo é do <ScrollBackdrop>, então o
+  // placeholder não precisa (e não deve) espelhar cor nenhuma.
+  return <div className="h-[60vh] w-full" aria-hidden="true" />
 }
 
-// A página alterna leilo-section / leilo-base; cada fallback espelha o fundo
-// da própria seção pra não piscar na troca.
-const SECTIONS: { Component: ComponentType; bg: string }[] = [
-  { Component: ContaDoLote, bg: 'bg-leilo-section' },
-  { Component: Metodo, bg: 'bg-leilo-base' },
-  { Component: Passos, bg: 'bg-leilo-section' },
-  { Component: Perfis, bg: 'bg-leilo-base' },
-  { Component: Memoria, bg: 'bg-leilo-section' },
-  { Component: Sniper, bg: 'bg-leilo-base' },
-  { Component: Inventario, bg: 'bg-leilo-section' },
-  { Component: Planos, bg: 'bg-leilo-base' },
-  { Component: Confianca, bg: 'bg-leilo-section' },
-  { Component: Resultados, bg: 'bg-leilo-base' },
-  { Component: Leo, bg: 'bg-leilo-section' },
-  { Component: Filosofia, bg: 'bg-leilo-base' },
-  { Component: Comparacao, bg: 'bg-leilo-section' },
-  { Component: DoisLados, bg: 'bg-leilo-base' },
-  { Component: Faq, bg: 'bg-leilo-section' },
-  { Component: Aviso, bg: 'bg-leilo-base' },
-  { Component: Manifesto, bg: 'bg-leilo-section' },
-  { Component: Fechamento, bg: 'bg-leilo-base' },
-  { Component: CtaFinal, bg: 'bg-leilo-section' },
+/**
+ * A ordem da página, com o tom que cada capítulo empresta ao fundo. O tom vale
+ * cheio no centro da seção; a virada entre dois tons cai no meio do caminho —
+ * é isso que faz a troca ler como escala e não como emenda. Ver config/tones.
+ */
+const SECTIONS: { Component: ComponentType; tone: string; band?: ComponentType }[] = [
+  { Component: ContaDoLote, tone: TONE.custo },
+  { Component: Metodo, tone: TONE.metodo },
+  { Component: Passos, tone: TONE.processo },
+  { Component: Perfis, tone: TONE.publico },
+  { Component: Memoria, tone: TONE.ruido },
+  { Component: Sniper, tone: TONE.agente },
+  { Component: Inventario, tone: TONE.entrega },
+  { Component: Planos, tone: TONE.oferta },
+  { Component: Confianca, tone: TONE.prova },
+  { Component: Resultados, tone: TONE.resultado },
+  { Component: Leo, tone: TONE.autor, band: LeoBand },
+  { Component: Filosofia, tone: TONE.limite },
+  { Component: Comparacao, tone: TONE.contraste },
+  { Component: DoisLados, tone: TONE.lados },
+  { Component: Faq, tone: TONE.duvida },
+  { Component: Aviso, tone: TONE.alerta },
+  { Component: Manifesto, tone: TONE.virada },
+  { Component: Fechamento, tone: TONE.fechamento },
+  { Component: CtaFinal, tone: TONE.climax },
 ]
+
+/** Respiro fotográfico que abre o capítulo do Léo. */
+function LeoBand() {
+  return (
+    <PhotoBand
+      src="/assets/photos/leo-carro-1920.avif"
+      srcSmall="/assets/photos/leo-carro-960.avif"
+      alt="Leonardo Ribeiro ao lado de um veículo, na rua"
+      // A faixa é larga e baixa: sem subir o recorte, o corte come a cabeça dele.
+      objectPosition="50% 22%"
+      tag="Quem está por trás"
+      caption="Sete anos comprando, recuperando e vendendo veículo de leilão — antes de virar plataforma, isso era rotina."
+    />
+  )
+}
 
 export default function App() {
   if (CAMPAIGN_DISABLED) {
@@ -60,6 +83,8 @@ export default function App() {
 
   return (
     <>
+      <ScrollBackdrop />
+
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-leilo-base"
@@ -67,17 +92,25 @@ export default function App() {
         Pular para o conteúdo principal
       </a>
 
-      <Hero />
+      <div data-tone={TONE.abertura}>
+        <Hero />
+      </div>
 
       <main id="main-content">
-        {SECTIONS.map(({ Component, bg }, i) => (
-          <Suspense key={i} fallback={<SectionFallback bg={bg} />}>
-            <Component />
-          </Suspense>
+        {SECTIONS.map(({ Component, tone, band: Band }, i) => (
+          <div key={i} data-tone={tone}>
+            {Band && <Band />}
+            <Suspense fallback={<SectionFallback />}>
+              <Component />
+            </Suspense>
+          </div>
         ))}
       </main>
 
-      <Footer />
+      <div data-tone={TONE.rodape}>
+        <Footer />
+      </div>
+
       <MobileCtaBar />
     </>
   )

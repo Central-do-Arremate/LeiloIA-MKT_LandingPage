@@ -28,7 +28,7 @@ function PerfilCard({ tag, items, delay }: { tag: string; items: string[]; delay
 
 export default function Perfis() {
   return (
-    <section aria-labelledby="perfis-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="perfis-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={PERFIS.eyebrow} title={PERFIS.title} headingId="perfis-heading" />
         <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 lg:grid-cols-2 lg:gap-8">

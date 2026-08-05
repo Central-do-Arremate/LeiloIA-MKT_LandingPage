@@ -10,7 +10,7 @@ const CHIP_TILT = ['-rotate-2', 'rotate-1', 'rotate-3', '-rotate-1', 'rotate-2',
 
 export default function Memoria() {
   return (
-    <section aria-labelledby="memoria-heading" className="relative overflow-hidden bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="memoria-heading" className="relative overflow-hidden py-16 sm:py-20 md:py-24">
       <Container className="relative">
         <ChapterHead eyebrow={MEMORIA.eyebrow} title={MEMORIA.title} headingId="memoria-heading" />
 

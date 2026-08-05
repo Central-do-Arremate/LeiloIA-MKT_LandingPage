@@ -193,7 +193,7 @@ export const INVENTARIO = {
   items: [
     { ref: 'REF.01', name: 'Plataforma online', desc: 'Direto pelo navegador, sem instalar nada.' },
     { ref: 'REF.02', name: 'Avaliações mensais', desc: 'Cada plano tem sua franquia mensal de avaliações.' },
-    { ref: 'REF.03', name: 'Análise em < 1 minuto', desc: 'Estimativa estruturada de custos e pontos de atenção.' },
+    { ref: 'REF.03', name: 'Análise em minutos', desc: 'Estimativa estruturada de custos e pontos de atenção.' },
     { ref: 'REF.04', name: 'Links das peças', desc: 'As referências usadas na composição da avaliação.' },
     { ref: 'REF.05', name: 'Histórico de avaliações', desc: 'Revise veículos avaliados sem refazer o processo.' },
     { ref: 'REF.06', name: 'Agente SNIPER', desc: 'Dúvidas respondidas com a metodologia do Léo.' },

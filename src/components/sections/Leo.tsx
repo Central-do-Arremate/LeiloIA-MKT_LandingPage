@@ -7,7 +7,7 @@ import { LEO } from '../../data/landing'
 
 export default function Leo() {
   return (
-    <section aria-labelledby="leo-heading" className="bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="leo-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <AnimatedSection className="flex flex-col gap-6">
@@ -37,7 +37,7 @@ export default function Leo() {
 
             <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.06] max-w-sm">
               {LEO.milestones.map((m) => (
-                <div key={m.label} className="bg-leilo-section px-4 py-3.5">
+                <div key={m.label} className="bg-leilo-panel/70 px-4 py-3.5">
                   <dt className={`${TAG} text-leilo-muted`}>{m.label}</dt>
                   <dd className="mt-1 font-mono text-base font-bold text-white">{m.value}</dd>
                 </div>

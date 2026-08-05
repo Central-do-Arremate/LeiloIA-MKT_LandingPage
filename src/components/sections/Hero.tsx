@@ -10,7 +10,7 @@ import { SIGNUP_URL } from '../../config/links'
 
 export default function Hero() {
   return (
-    <header className="relative overflow-hidden bg-leilo-base pt-12 sm:pt-16 md:pt-20">
+    <header className="relative overflow-hidden pt-12 sm:pt-16 md:pt-20">
       {/* Glow de assinatura — sem imagem de fundo: a identidade aqui é luz + tipografia. */}
       <div className="pointer-events-none absolute -top-48 left-1/2 h-96 w-[42rem] max-w-full -translate-x-1/2 rounded-full bg-leilo-go/10 blur-[140px]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-leilo-go/10 to-transparent" />

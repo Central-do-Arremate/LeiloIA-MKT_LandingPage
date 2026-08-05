@@ -6,7 +6,7 @@ import { SNIPER } from '../../data/landing'
 
 export default function Sniper() {
   return (
-    <section aria-labelledby="sniper-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="sniper-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>

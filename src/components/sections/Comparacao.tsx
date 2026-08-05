@@ -7,7 +7,7 @@ import { COMPARACAO } from '../../data/landing'
 
 export default function Comparacao() {
   return (
-    <section aria-labelledby="comparacao-heading" className="bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="comparacao-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={COMPARACAO.eyebrow} title={COMPARACAO.title} headingId="comparacao-heading" />
 

@@ -6,7 +6,7 @@ import { MANIFESTO } from '../../data/landing'
 
 export default function Manifesto() {
   return (
-    <section aria-label="Manifesto" className="bg-leilo-section py-16 sm:py-20 md:py-24">
+    <section aria-label="Manifesto" className="py-16 sm:py-20 md:py-24">
       <Container className="max-w-4xl">
         <AnimatedSection>
           <Eyebrow>{MANIFESTO.eyebrow}</Eyebrow>

@@ -5,7 +5,7 @@ import { LEILOIA_URL } from '../config/campaign'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-leilo-section py-12 sm:py-16">
+    <footer className="border-t border-white/[0.08] py-12 sm:py-16">
       <Container className="flex flex-col items-center gap-6 text-center">
         {/* Wordmark é porta de entrada da plataforma, não enfeite. */}
         <a href={LEILOIA_URL} aria-label="Ir para a plataforma LeiloIA" className="inline-block">

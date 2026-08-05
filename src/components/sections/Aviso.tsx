@@ -6,7 +6,7 @@ import { AVISO } from '../../data/landing'
 
 export default function Aviso() {
   return (
-    <section aria-labelledby="aviso-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="aviso-heading" className="py-16 sm:py-20 md:py-24">
       <Container className="max-w-4xl">
         <AnimatedSection>
           <div className="rounded-2xl border border-white/15 p-6 sm:p-10">

@@ -9,7 +9,7 @@ import { SIGNUP_URL } from '../../config/links'
 
 export default function Planos() {
   return (
-    <section id="planos" aria-labelledby="planos-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section id="planos" aria-labelledby="planos-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead
           eyebrow={PLANOS_META.eyebrow}

@@ -14,7 +14,7 @@ export default function Resultados() {
   if (TESTIMONIALS.length === 0 && !CASE_STUDY) return null
 
   return (
-    <section aria-labelledby="resultados-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="resultados-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={RESULTADOS_META.eyebrow} title={RESULTADOS_META.title} headingId="resultados-heading" />
 

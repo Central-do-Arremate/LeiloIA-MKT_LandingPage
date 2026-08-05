@@ -7,7 +7,7 @@ import { METODO } from '../../data/landing'
 
 export default function Metodo() {
   return (
-    <section aria-labelledby="metodo-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="metodo-heading" className="py-16 sm:py-20 md:py-24">
       <Container>
         <ChapterHead eyebrow={METODO.eyebrow} title={METODO.title} headingId="metodo-heading" />
 

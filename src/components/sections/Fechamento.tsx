@@ -7,7 +7,7 @@ import { SIGNUP_URL } from '../../config/links'
 
 export default function Fechamento() {
   return (
-    <section aria-labelledby="fechamento-heading" className="bg-leilo-base py-16 sm:py-20 md:py-24">
+    <section aria-labelledby="fechamento-heading" className="py-16 sm:py-20 md:py-24">
       <Container className="max-w-4xl">
         <ChapterHead
           eyebrow={FECHAMENTO.eyebrow}
