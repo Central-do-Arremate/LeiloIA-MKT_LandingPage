@@ -5,9 +5,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/[0.08] bg-leilo-section py-12 sm:py-16">
       <Container className="flex flex-col items-center gap-6 text-center">
-        <p className="font-euro text-2xl font-bold uppercase tracking-tight text-white">
-          Leilo<span className="text-leilo-go">IA</span>
-        </p>
+        <img
+          src="/assets/LOGO-WHITE-tosize.avif"
+          alt="LeiloIA"
+          width={640}
+          height={160}
+          loading="lazy"
+          className="h-8 w-auto sm:h-9"
+        />
         <p className="max-w-3xl text-sm text-white/80">
           LR Digital e Educação Ltda. — CNPJ: 52.235.980/0001-05
           <br />
@@ -22,17 +27,25 @@ export default function Footer() {
           estar visíveis em fotos, descrições ou documentos. Leia sempre o edital, verifique as regras do leilão e
           considere taxas e despesas adicionais antes de qualquer arremate.
         </p>
-        <p className="text-xs text-white/40">
-          Desenvolvido por{' '}
-          <a
-            href="https://www.avlisolutions.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-leilo-go"
-          >
-            AVLI Solutions
-          </a>
-        </p>
+        {/* Mesmo crédito do app (ia.centraldoarremate.com.br): wordmark da AVLI,
+            não texto — assinatura visual idêntica nos dois produtos. */}
+        <a
+          href="https://www.avlisolutions.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Desenvolvido por AVLI Solutions"
+          className="group inline-flex items-center gap-2 text-xs text-white/40 transition-colors hover:text-white"
+        >
+          <span>Desenvolvido por</span>
+          <img
+            src="/assets/avli-horizontal.png"
+            alt="AVLI Solutions"
+            width={918}
+            height={142}
+            loading="lazy"
+            className="h-4 w-auto opacity-70 transition-opacity group-hover:opacity-100"
+          />
+        </a>
       </Container>
     </footer>
   )

@@ -12,12 +12,6 @@ export const HERO = {
   lead: 'Uma inteligência artificial treinada durante mais de um ano com a metodologia de Leonardo Ribeiro — 7+ anos de mercado, 350+ arremates, validada por 100+ mentorados. Ela identifica custos, busca peças, avalia o risco e organiza suas oportunidades antes de você decidir quanto oferecer.',
   ctaPrimary: 'Quero avaliar meu próximo carro',
   ctaSecondary: 'Ver como funciona',
-  proofPlate: [
-    { label: 'Treino', value: '+1 ano' },
-    { label: 'Arremates', value: '350+' },
-    { label: 'Mentorados', value: '100+' },
-    { label: 'Laudo', value: '< 1 min' },
-  ],
 }
 
 export const TICKER_ITEMS = ['AVALIAÇÃO EM MENOS DE 1 MINUTO', 'METODOLOGIA LÉO RIBEIRO', '350+ ARREMATES', 'AGENTE SNIPER']
@@ -333,8 +327,8 @@ export const RESULTADOS_META = { eyebrow: 'Resultados', title: 'Quem usa, compro
 export const LEO = {
   eyebrow: 'Quem está por trás',
   title: 'Leonardo Ribeiro: 7 anos, 350 arremates, 100 mentorados.',
-  // Solte um retrato em src/assets/leo-ribeiro.(avif|webp|jpg) e aponte aqui.
-  portrait: null as string | null,
+  // Retrato recortado (fundo transparente) — mesmo arquivo usado na LP do curso.
+  portrait: '/assets/leo-ribeiro.avif' as string | null,
   paragraphs: [
     'Meu nome é Leonardo Ribeiro — muita gente me conhece como Léo Ribeiro.',
     'Minha história no leilão começou há mais de sete anos, procurando um carro pra uso próprio. Arrematei meu primeiro veículo, usei por um mês e vendi. Nessa primeira operação, ganhei cerca de R$ 25 mil.',

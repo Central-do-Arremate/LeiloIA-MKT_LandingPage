@@ -42,7 +42,12 @@
     <meta name="twitter:image" content="/social-share.png" />
 
     <meta name="theme-color" content="#201e1f" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Mesmo par de ícones do app (ia.centraldoarremate.com.br): preto no tema
+         claro, verde no escuro. PNG porque aba de navegador e atalho de home
+         screen são o pior lugar do mundo pra depender de suporte a AVIF. -->
+    <link rel="icon" type="image/png" href="/assets/ICON-BLACK-tosize.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" href="/assets/ICON-GREEN-tosize.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/assets/ICON-GREEN-tosize.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

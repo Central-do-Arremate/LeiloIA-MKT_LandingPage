@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import Container from '../Container'
 import CtaButton from '../CtaButton'
-import PlateStrip from '../PlateStrip'
 import Ticker from '../Ticker'
 import { TAG } from '../type'
 import { HERO, TICKER_ITEMS } from '../../data/landing'
@@ -15,6 +14,19 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-leilo-go/10 to-transparent" />
 
       <Container className="relative flex flex-col items-center pb-12 sm:pb-16">
+        {/* Wordmark oficial (LOGOS-AVIF). Fundo é sempre escuro aqui, então a
+            versão branca é a única que precisa existir na LP. */}
+        <motion.img
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          src="/assets/LOGO-WHITE-tosize.avif"
+          alt="LeiloIA"
+          width={640}
+          height={160}
+          className="mb-8 h-10 w-auto sm:h-12"
+        />
+
         <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,14 +83,6 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 w-full max-w-3xl md:mt-12"
-        >
-          <PlateStrip items={HERO.proofPlate} />
-        </motion.div>
       </Container>
 
       <Ticker items={TICKER_ITEMS} label="Destaques da LeiloIA" />

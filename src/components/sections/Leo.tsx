@@ -11,13 +11,19 @@ export default function Leo() {
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <AnimatedSection className="flex flex-col gap-6">
             {LEO.portrait ? (
-              <img
-                draggable={false}
-                src={LEO.portrait}
-                alt="Leonardo Ribeiro, especialista em leilão automotivo"
-                loading="lazy"
-                className="w-full max-w-sm rounded-2xl"
-              />
+              /* PNG/AVIF recortado: sem fundo próprio, então o painel escuro
+                 atrás é que dá o enquadramento. */
+              <div className="w-full max-w-sm overflow-hidden rounded-2xl border border-white/[0.08] bg-leilo-panel/40">
+                <img
+                  draggable={false}
+                  src={LEO.portrait}
+                  alt="Leonardo Ribeiro, especialista em leilão automotivo"
+                  loading="lazy"
+                  width={555}
+                  height={795}
+                  className="w-full"
+                />
+              </div>
             ) : (
               /* Slot do retrato — deliberadamente vazio até termos a foto real. */
               <div className="grid aspect-[4/5] w-full max-w-sm place-items-center rounded-2xl border border-white/[0.08] bg-leilo-panel/40">
