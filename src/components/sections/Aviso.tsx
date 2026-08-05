@@ -1,5 +1,6 @@
 import AnimatedSection from '../AnimatedSection'
 import Container from '../Container'
+import { brand } from '../brand'
 import { H2, TAG } from '../type'
 import { AVISO } from '../../data/landing'
 
@@ -18,7 +19,7 @@ export default function Aviso() {
             </div>
 
             <h2 id="aviso-heading" className={`mt-6 ${H2}`}>
-              {AVISO.title}
+              {brand(AVISO.title)}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85">{AVISO.intro}</p>
 
@@ -26,7 +27,7 @@ export default function Aviso() {
               {AVISO.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-white/80">
                   <span aria-hidden="true" className="mt-[0.4rem] h-1 w-3 flex-shrink-0 bg-leilo-go/70" />
-                  {item}
+                  {brand(item)}
                 </li>
               ))}
             </ul>

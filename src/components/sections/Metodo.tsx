@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { LEAD, TAG } from '../type'
 import { METODO } from '../../data/landing'
 
@@ -14,11 +15,11 @@ export default function Metodo() {
           <AnimatedSection delay={0.1} className="flex flex-col gap-6">
             {METODO.paragraphs.map((p) => (
               <p key={p.slice(0, 24)} className={LEAD}>
-                {p}
+                {brand(p)}
               </p>
             ))}
             <p className="border-l-2 border-leilo-go/60 pl-4 text-sm leading-relaxed text-leilo-muted">
-              {METODO.honesty}
+              {brand(METODO.honesty)}
             </p>
           </AnimatedSection>
 

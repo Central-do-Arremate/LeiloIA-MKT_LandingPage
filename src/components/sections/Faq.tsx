@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { FAQ } from '../../data/landing'
 import { WHATSAPP_URL } from '../../config/links'
 
@@ -45,7 +46,7 @@ export default function Faq() {
                     aria-controls={`faq-panel-${i}`}
                     className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
                   >
-                    <span className="text-[0.9375rem] font-semibold text-white sm:text-base">{item.q}</span>
+                    <span className="text-[0.9375rem] font-semibold text-white sm:text-base">{brand(item.q)}</span>
                     <span aria-hidden="true" className="font-mono text-xl font-bold text-leilo-go">
                       {isOpen ? '−' : '+'}
                     </span>
@@ -62,7 +63,7 @@ export default function Faq() {
                         className="overflow-hidden"
                       >
                         <p className="px-5 pb-5 text-sm leading-relaxed text-leilo-muted sm:px-6 sm:text-[0.9375rem]">
-                          {item.a}
+                          {brand(item.a)}
                         </p>
                       </motion.div>
                     )}

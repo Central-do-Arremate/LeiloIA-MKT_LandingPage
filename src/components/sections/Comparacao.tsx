@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { TAG } from '../type'
 import { COMPARACAO } from '../../data/landing'
 
@@ -29,7 +30,7 @@ export default function Comparacao() {
 
           <AnimatedSection delay={0.2}>
             <div className="h-full rounded-2xl border border-leilo-go/30 bg-leilo-go/[0.04] p-6 sm:p-8 shadow-go-glow">
-              <p className={`${TAG} text-leilo-go`}>{COMPARACAO.com.tag}</p>
+              <p className={`${TAG} text-leilo-go`}>{brand(COMPARACAO.com.tag)}</p>
               <ul className="mt-6 flex flex-col gap-3.5">
                 {COMPARACAO.com.items.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-[0.9375rem] font-medium text-white sm:text-base">

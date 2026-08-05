@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import Container from '../Container'
 import CtaButton from '../CtaButton'
+import { brand } from '../brand'
 import { H2 } from '../type'
 import { CTA_FINAL } from '../../data/landing'
 import { SIGNUP_URL } from '../../config/links'
@@ -26,11 +27,12 @@ export default function CtaFinal() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.15} className="mt-10 w-full max-w-xl">
+          {/* No botão o verde da marca não cabe: o próprio botão já é verde. */}
           <CtaButton href={SIGNUP_URL}>{CTA_FINAL.cta}</CtaButton>
         </AnimatedSection>
 
         <AnimatedSection delay={0.25}>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-leilo-muted">{CTA_FINAL.tagline}</p>
+          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-leilo-muted">{brand(CTA_FINAL.tagline)}</p>
         </AnimatedSection>
       </Container>
     </section>

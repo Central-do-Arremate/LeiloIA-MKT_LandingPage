@@ -3,7 +3,9 @@ import Container from '../Container'
 import CtaButton from '../CtaButton'
 import Ticker from '../Ticker'
 import { TAG } from '../type'
+import { brand } from '../brand'
 import { HERO, TICKER_ITEMS } from '../../data/landing'
+import { LEILOIA_URL } from '../../config/campaign'
 import { SIGNUP_URL } from '../../config/links'
 
 export default function Hero() {
@@ -15,17 +17,24 @@ export default function Hero() {
 
       <Container className="relative flex flex-col items-center pb-12 sm:pb-16">
         {/* Wordmark oficial (LOGOS-AVIF). Fundo é sempre escuro aqui, então a
-            versão branca é a única que precisa existir na LP. */}
-        <motion.img
+            versão branca é a única que precisa existir na LP. Clicável: leva
+            pra plataforma, igual ao logo do footer. */}
+        <motion.a
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          src="/assets/LOGO-WHITE-tosize.avif"
-          alt="LeiloIA"
-          width={640}
-          height={160}
-          className="mb-8 h-10 w-auto sm:h-12"
-        />
+          href={LEILOIA_URL}
+          aria-label="Ir para a plataforma LeiloIA"
+          className="mb-8 inline-block"
+        >
+          <img
+            src="/assets/LOGO-WHITE-tosize.avif"
+            alt="LeiloIA"
+            width={640}
+            height={160}
+            className="h-10 w-auto transition-opacity hover:opacity-80 sm:h-12"
+          />
+        </motion.a>
 
         <motion.p
           initial={{ opacity: 0, y: -10 }}
@@ -34,7 +43,7 @@ export default function Hero() {
           className={`inline-flex items-center gap-2 rounded-full border border-leilo-go/40 bg-leilo-go/10 px-4 py-2 ${TAG} text-leilo-go`}
         >
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-leilo-go animate-pulse-green" />
-          {HERO.eyebrow}
+          {brand(HERO.eyebrow)}
         </motion.p>
 
         <motion.h1
@@ -56,7 +65,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 max-w-3xl text-center text-base leading-relaxed text-white/85 sm:text-lg md:text-xl"
         >
-          {HERO.lead}
+          {brand(HERO.lead)}
         </motion.p>
 
         <motion.p
@@ -65,7 +74,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-4 max-w-2xl text-center text-sm font-medium text-leilo-muted sm:text-base"
         >
-          {HERO.sub}
+          {brand(HERO.sub)}
         </motion.p>
 
         <motion.div

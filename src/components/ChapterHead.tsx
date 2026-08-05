@@ -1,7 +1,11 @@
 import type { ReactNode } from 'react'
 import AnimatedSection from './AnimatedSection'
 import Eyebrow from './Eyebrow'
+import { brand } from './brand'
 import { H2, LEAD } from './type'
+
+/** Título/lead vêm como string na maioria das seções — aí a marca ganha cor. */
+const paint = (node: ReactNode) => (typeof node === 'string' ? brand(node) : node)
 
 interface ChapterHeadProps {
   eyebrow: string
@@ -24,11 +28,11 @@ export default function ChapterHead({
 }: ChapterHeadProps) {
   return (
     <AnimatedSection className={className}>
-      <Eyebrow>{eyebrow}</Eyebrow>
+      <Eyebrow>{brand(eyebrow)}</Eyebrow>
       <h2 id={headingId} className={`mt-5 ${titleMax} ${H2}`}>
-        {title}
+        {paint(title)}
       </h2>
-      {lead && <p className={`mt-5 max-w-2xl ${LEAD}`}>{lead}</p>}
+      {lead && <p className={`mt-5 max-w-2xl ${LEAD}`}>{paint(lead)}</p>}
     </AnimatedSection>
   )
 }

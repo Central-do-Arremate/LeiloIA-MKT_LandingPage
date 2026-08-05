@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { TAG } from '../type'
 import { PLANOS, PLANOS_META } from '../../data/landing'
 import { SIGNUP_URL } from '../../config/links'
@@ -37,7 +38,7 @@ export default function Planos() {
                 </p>
                 <p className="mt-2 font-mono text-sm font-bold text-leilo-go">{plan.perAnalysis}</p>
                 <p className="mt-3 text-sm font-medium text-white/85">{plan.quota}</p>
-                <p className="mt-2 text-sm leading-relaxed text-leilo-muted">{plan.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-leilo-muted">{brand(plan.desc)}</p>
 
                 <ul className="mt-6 flex flex-1 flex-col gap-3 border-t border-white/[0.08] pt-6">
                   {plan.features.map((f) => (
@@ -45,7 +46,7 @@ export default function Planos() {
                       <span aria-hidden="true" className="mt-0.5 font-mono text-xs font-bold text-leilo-go">
                         ✓
                       </span>
-                      {f}
+                      {brand(f)}
                     </li>
                   ))}
                 </ul>
@@ -70,10 +71,10 @@ export default function Planos() {
         <AnimatedSection delay={0.2}>
           <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-leilo-go/30 bg-leilo-go/[0.05] p-6 text-center">
             <p className={`${TAG} text-leilo-go`}>{PLANOS_META.bonusTag}</p>
-            <p className="mt-3 text-sm leading-relaxed text-white/85">{PLANOS_META.bonusNote}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/85">{brand(PLANOS_META.bonusNote)}</p>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-leilo-muted">
-            {PLANOS_META.creditsNote}
+            {brand(PLANOS_META.creditsNote)}
           </p>
         </AnimatedSection>
       </Container>

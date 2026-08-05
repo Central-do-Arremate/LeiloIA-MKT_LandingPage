@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { READOUT } from '../type'
 import { CONFIANCA } from '../../data/landing'
 
@@ -34,7 +35,7 @@ export default function Confianca() {
 
         <AnimatedSection delay={0.2}>
           <p className="mx-auto mt-8 max-w-3xl border-l-2 border-leilo-go/60 pl-4 text-sm leading-relaxed text-leilo-muted">
-            {CONFIANCA.honesty}
+            {brand(CONFIANCA.honesty)}
           </p>
         </AnimatedSection>
       </Container>

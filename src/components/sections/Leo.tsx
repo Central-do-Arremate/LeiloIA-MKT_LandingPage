@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { LEAD, TAG } from '../type'
 import { LEO } from '../../data/landing'
 
@@ -49,7 +50,7 @@ export default function Leo() {
             <AnimatedSection delay={0.15} className="mt-8 flex flex-col gap-5">
               {LEO.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)} className={LEAD}>
-                  {p}
+                  {brand(p)}
                 </p>
               ))}
               <p className={`mt-2 ${TAG} text-leilo-go`}>{LEO.signoff}</p>

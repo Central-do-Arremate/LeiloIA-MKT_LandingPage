@@ -1,4 +1,5 @@
 import { ArrowUpRight, SearchX } from 'lucide-react'
+import { brand } from './brand'
 import { CENTRAL_DO_ARREMATE_URL, LEILOIA_URL } from '../config/campaign'
 
 const LINKS = [
@@ -41,7 +42,7 @@ export default function CampaignWall() {
               className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 text-left transition-colors hover:border-leilo-go/60 hover:bg-white/10"
             >
               <span>
-                <span className="block text-lg font-bold text-white">{link.label}</span>
+                <span className="block text-lg font-bold text-white">{brand(link.label)}</span>
                 <span className="mt-1 block text-sm text-white/60">{link.description}</span>
               </span>
               <ArrowUpRight

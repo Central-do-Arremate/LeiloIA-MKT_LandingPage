@@ -2,6 +2,7 @@ import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
 import CtaButton from '../CtaButton'
+import { brand } from '../brand'
 import { H3, TAG } from '../type'
 import { CONTA } from '../../data/landing'
 import { SIGNUP_URL } from '../../config/links'
@@ -32,7 +33,7 @@ export default function ContaDoLote() {
           {/* A resposta — lado verde. */}
           <AnimatedSection delay={0.2}>
             <div className="h-full rounded-2xl border border-leilo-go/30 bg-leilo-go/[0.04] p-6 sm:p-8 shadow-go-glow">
-              <h3 className={H3}>{CONTA.answerTitle}</h3>
+              <h3 className={H3}>{brand(CONTA.answerTitle)}</h3>
               <ul className="mt-6 flex flex-col gap-3.5">
                 {CONTA.answers.map((item) => (
                   <li key={item} className="flex items-start gap-3">

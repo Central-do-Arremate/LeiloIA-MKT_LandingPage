@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { BODY, H3, TAG } from '../type'
 import { PASSOS } from '../../data/landing'
 
@@ -17,8 +18,8 @@ export default function Passos() {
               <AnimatedSection key={step.stamp} delay={0.1 * i}>
                 <li className="h-full rounded-2xl border border-white/[0.08] bg-leilo-panel/40 p-6">
                   <p className="font-mono text-2xl font-bold text-leilo-go">{step.stamp}</p>
-                  <h3 className={`mt-4 ${H3}`}>{step.title}</h3>
-                  <p className={`mt-2.5 ${BODY}`}>{step.body}</p>
+                  <h3 className={`mt-4 ${H3}`}>{brand(step.title)}</h3>
+                  <p className={`mt-2.5 ${BODY}`}>{brand(step.body)}</p>
                 </li>
               </AnimatedSection>
             ))}

@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { LEAD } from '../type'
 import { FILOSOFIA } from '../../data/landing'
 
@@ -22,9 +23,9 @@ export default function Filosofia() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2} className="mt-8 flex flex-col gap-5">
-          <p className={LEAD}>{FILOSOFIA.body}</p>
+          <p className={LEAD}>{brand(FILOSOFIA.body)}</p>
           <p className="font-euro text-xl font-bold uppercase tracking-tight text-white sm:text-2xl">
-            {FILOSOFIA.punchline}
+            {brand(FILOSOFIA.punchline)}
           </p>
         </AnimatedSection>
       </Container>

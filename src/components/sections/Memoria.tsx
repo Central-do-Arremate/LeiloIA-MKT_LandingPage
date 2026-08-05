@@ -1,6 +1,7 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import { brand } from '../brand'
 import { LEAD } from '../type'
 import { MEMORIA } from '../../data/landing'
 
@@ -17,7 +18,7 @@ export default function Memoria() {
           <AnimatedSection delay={0.1} className="flex flex-col gap-6">
             {MEMORIA.paragraphs.map((p) => (
               <p key={p.slice(0, 24)} className={LEAD}>
-                {p}
+                {brand(p)}
               </p>
             ))}
           </AnimatedSection>

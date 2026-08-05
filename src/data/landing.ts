@@ -226,7 +226,7 @@ export const PLANOS: Plan[] = [
     name: 'Operador',
     price: 'R$ 19,90',
     perAnalysis: 'R$ 3,98 por análise',
-    quota: '5 análises por dia · 5 por mês',
+    quota: '5 análises por mês',
     desc: 'Para quem está começando e avalia poucos lotes por mês.',
     features: [
       'Acesso à plataforma LeiloIA',
@@ -243,7 +243,7 @@ export const PLANOS: Plan[] = [
     name: 'Profissional',
     price: 'R$ 59,90',
     perAnalysis: 'R$ 3,00 por análise',
-    quota: '20 análises por dia · 20 por mês',
+    quota: '20 análises por mês',
     desc: 'Para quem acompanha oportunidades com frequência e precisa de volume.',
     features: [
       'Acesso à plataforma LeiloIA',
@@ -262,7 +262,7 @@ export const PLANOS: Plan[] = [
     name: 'Especialista',
     price: 'R$ 197,90',
     perAnalysis: 'R$ 1,98 por análise',
-    quota: '100 análises por dia · 100 por mês',
+    quota: '100 análises por mês',
     desc: 'Para profissionais e investidores que analisam um volume alto de veículos.',
     features: [
       'Acesso à plataforma LeiloIA',
