@@ -28,7 +28,7 @@ export default function Hero() {
           className="mb-8 inline-block"
         >
           <img
-            src="/assets/LOGO-WHITE-tosize.avif"
+            src="/assets/LOGO-GREENWHITE-tosize.avif"
             alt="LeiloIA"
             width={640}
             height={160}
