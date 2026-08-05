@@ -214,67 +214,82 @@ export interface Plan {
   id: string
   name: string
   price: string
+  /** Preço dividido pela franquia mensal — a régua de comparação entre planos. */
+  perAnalysis: string
+  /** Limites de uso, como aparecem no app. */
+  quota: string
   desc: string
   features: string[]
+  /** Selo acima do nome. Só o plano recomendado carrega um. */
+  badge?: string
   highlight?: boolean
   cta: string
 }
 
 export const PLANOS: Plan[] = [
   {
-    id: 'basico',
-    name: 'Básico',
-    price: 'R$ 29,90',
-    desc: 'Para quem está começando ou realiza poucas avaliações mensais.',
+    id: 'operador',
+    name: 'Operador',
+    price: 'R$ 19,90',
+    perAnalysis: 'R$ 3,98 por análise',
+    quota: '5 análises por dia · 5 por mês',
+    desc: 'Para quem está começando e avalia poucos lotes por mês.',
     features: [
       'Acesso à plataforma LeiloIA',
-      'Franquia mensal de avaliações',
       'Histórico de avaliações',
-      'Agente SNIPER',
-      'Links de peças',
+      'Links de compra das peças',
+      'Integração com Google Agenda',
+      'Créditos avulsos com 25% de desconto',
       'Suporte pela plataforma',
     ],
-    cta: 'Começar com o Básico',
+    cta: 'Começar com o Operador',
   },
   {
-    id: 'intermediario',
-    name: 'Intermediário',
+    id: 'profissional',
+    name: 'Profissional',
     price: 'R$ 59,90',
-    desc: 'Para quem acompanha oportunidades com frequência e precisa de mais volume.',
+    perAnalysis: 'R$ 3,00 por análise',
+    quota: '20 análises por dia · 20 por mês',
+    desc: 'Para quem acompanha oportunidades com frequência e precisa de volume.',
     features: [
-      'Tudo do plano Básico',
-      'Quantidade ampliada de avaliações',
-      'Valor reduzido em avaliações extras',
-      'Histórico e Agente SNIPER',
-      'Links de peças',
-      'Suporte pela plataforma',
+      'Acesso à plataforma LeiloIA',
+      'Agente SNIPER incluso',
+      'Histórico de avaliações',
+      'Links de compra das peças',
+      'Integração com Google Agenda',
+      'Créditos avulsos com 40% de desconto',
     ],
-    cta: 'Escolher o Intermediário',
+    badge: 'Especialista recomenda',
+    highlight: true,
+    cta: 'Quero o Profissional',
   },
   {
-    id: 'avancado',
-    name: 'Avançado',
-    price: 'R$ 89,90',
-    desc: 'Para profissionais e investidores que analisam um volume maior de veículos.',
+    id: 'especialista',
+    name: 'Especialista',
+    price: 'R$ 197,90',
+    perAnalysis: 'R$ 1,98 por análise',
+    quota: '100 análises por dia · 100 por mês',
+    desc: 'Para profissionais e investidores que analisam um volume alto de veículos.',
     features: [
-      '40 avaliações por mês',
-      'Acesso completo à plataforma',
-      'Avaliações extras a R$ 2,25 cada',
-      'Histórico e Agente SNIPER',
-      'Links das peças consideradas',
-      'Suporte pela plataforma',
+      'Acesso à plataforma LeiloIA',
+      'Agente SNIPER incluso',
+      'Histórico de avaliações',
+      'Links de compra das peças',
+      'Integração com Google Agenda',
+      'Créditos avulsos com 70% de desconto',
     ],
-    highlight: true,
-    cta: 'Quero o Avançado',
+    cta: 'Quero o Especialista',
   },
 ]
 
 export const PLANOS_META = {
   eyebrow: 'Planos',
   title: 'Escolha o plano ideal para o seu volume de avaliações.',
-  note: 'Assinatura mensal, sem fidelidade. Cancele quando quiser.',
-  avancadoNote:
-    'No Avançado, mesmo depois das 40 avaliações mensais, você continua analisando por R$ 2,25 cada nova avaliação.',
+  note: 'Assinatura mensal, renova todo mês. Sem fidelidade — cancele quando quiser.',
+  bonusTag: 'Bônus',
+  bonusNote: 'Agente SNIPER incluso nos planos Profissional e Especialista.',
+  creditsNote:
+    'Acabou a franquia? Assinante compra análises avulsas com desconto: 25% no Operador, 40% no Profissional e 70% no Especialista.',
 }
 
 // ── S10 · Confiança ─────────────────────────────────────────────────────────
@@ -505,7 +520,7 @@ export const FECHAMENTO = {
     'Na insegurança que impede de começar',
     'Na desorganização que trava o crescimento',
   ],
-  punchline: 'Por até R$ 89,90 por mês, você passa a contar com uma plataforma preparada para acelerar e estruturar essa etapa.',
+  punchline: 'A partir de R$ 19,90 por mês, você passa a contar com uma plataforma preparada para acelerar e estruturar essa etapa.',
 }
 
 // ── S20 · CTA final ─────────────────────────────────────────────────────────

@@ -27,15 +27,17 @@ export default function Planos() {
                     : 'border-white/[0.08] bg-leilo-panel/40'
                 }`}
               >
-                {plan.highlight && <p className={`${TAG} text-leilo-go`}>Mais completo</p>}
-                <h3 className={`font-euro text-2xl font-bold uppercase tracking-tight text-white ${plan.highlight ? 'mt-3' : ''}`}>
+                {plan.badge && <p className={`${TAG} text-leilo-go`}>{plan.badge}</p>}
+                <h3 className={`font-euro text-2xl font-bold uppercase tracking-tight text-white ${plan.badge ? 'mt-3' : ''}`}>
                   {plan.name}
                 </h3>
                 <p className="mt-3">
                   <span className="font-mono text-3xl font-bold text-white sm:text-4xl">{plan.price}</span>
                   <span className="ml-1.5 text-sm text-leilo-muted">/mês</span>
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-leilo-muted">{plan.desc}</p>
+                <p className="mt-2 font-mono text-sm font-bold text-leilo-go">{plan.perAnalysis}</p>
+                <p className="mt-3 text-sm font-medium text-white/85">{plan.quota}</p>
+                <p className="mt-2 text-sm leading-relaxed text-leilo-muted">{plan.desc}</p>
 
                 <ul className="mt-6 flex flex-1 flex-col gap-3 border-t border-white/[0.08] pt-6">
                   {plan.features.map((f) => (
@@ -66,8 +68,12 @@ export default function Planos() {
         </div>
 
         <AnimatedSection delay={0.2}>
-          <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-leilo-muted">
-            {PLANOS_META.avancadoNote}
+          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-leilo-go/30 bg-leilo-go/[0.05] p-6 text-center">
+            <p className={`${TAG} text-leilo-go`}>{PLANOS_META.bonusTag}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/85">{PLANOS_META.bonusNote}</p>
+          </div>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-leilo-muted">
+            {PLANOS_META.creditsNote}
           </p>
         </AnimatedSection>
       </Container>
