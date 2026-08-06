@@ -15,7 +15,7 @@ export default function CtaFinal() {
           página muda com o scroll. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 min-h-[520px] sm:min-h-0"
         style={{
           WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent)',
           maskImage: 'linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent)',
@@ -29,7 +29,7 @@ export default function CtaFinal() {
           loading="lazy"
           decoding="async"
           draggable={false}
-          className="h-full w-full object-cover opacity-[0.22]"
+          className="h-full w-full object-cover object-[38%_center] opacity-[0.48] sm:object-center sm:opacity-[0.22]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(85%_75%_at_50%_45%,rgba(0,0,0,0.82),rgba(0,0,0,0.35)_70%,transparent)]" />
       </div>
