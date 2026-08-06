@@ -1,8 +1,10 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import CtaButton from '../CtaButton'
 import { TAG } from '../type'
 import { PERFIS } from '../../data/landing'
+import { SIGNUP_URL } from '../../config/links'
 
 function PerfilCard({ tag, items, delay }: { tag: string; items: string[]; delay: number }) {
   return (
@@ -35,6 +37,12 @@ export default function Perfis() {
           <PerfilCard tag={PERFIS.iniciante.tag} items={PERFIS.iniciante.items} delay={0.1} />
           <PerfilCard tag={PERFIS.profissional.tag} items={PERFIS.profissional.items} delay={0.2} />
         </div>
+
+        <AnimatedSection delay={0.3} className="mt-10 flex justify-center md:mt-14">
+          <CtaButton href={SIGNUP_URL} variant="orange" className="max-w-md">
+            {PERFIS.cta}
+          </CtaButton>
+        </AnimatedSection>
       </Container>
     </section>
   )

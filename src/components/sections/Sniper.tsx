@@ -1,8 +1,10 @@
 import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
 import Container from '../Container'
+import CtaButton from '../CtaButton'
 import { BODY, TAG } from '../type'
 import { SNIPER } from '../../data/landing'
+import { SIGNUP_URL } from '../../config/links'
 
 export default function Sniper() {
   return (
@@ -40,6 +42,10 @@ export default function Sniper() {
                 </p>
               </div>
             </div>
+
+            <AnimatedSection delay={0.25} className="mt-6">
+              <CtaButton href={SIGNUP_URL}>Avalie com o Sniper</CtaButton>
+            </AnimatedSection>
           </AnimatedSection>
         </div>
       </Container>

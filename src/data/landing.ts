@@ -143,6 +143,7 @@ export const PERFIS = {
       'Quer tecnologia sem abandonar o próprio conhecimento',
     ],
   },
+  cta: 'Começar agora',
 }
 
 // ── S6 · Da memória pro sistema ─────────────────────────────────────────────

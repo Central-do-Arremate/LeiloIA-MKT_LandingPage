@@ -5,14 +5,16 @@ interface CtaButtonProps {
   href: string
   children: ReactNode
   className?: string
-  variant?: 'solid' | 'ghost'
+  variant?: 'solid' | 'ghost' | 'orange'
 }
 
 export default function CtaButton({ href, children, className = '', variant = 'solid' }: CtaButtonProps) {
   const styles =
     variant === 'solid'
       ? 'bg-leilo-go text-leilo-base shadow-go-glow'
-      : 'border border-white/20 bg-white/[0.04] text-white hover:border-leilo-go/60'
+      : variant === 'orange'
+        ? 'bg-orange-500 text-leilo-base shadow-[0_0_0_1px_rgba(249,115,22,0.35),0_0_24px_-4px_rgba(249,115,22,0.55)]'
+        : 'border border-white/20 bg-white/[0.04] text-white hover:border-leilo-go/60'
 
   return (
     <motion.a

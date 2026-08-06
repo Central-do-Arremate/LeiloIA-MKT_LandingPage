@@ -15,11 +15,11 @@ export const TONE = {
   /** A conta do lote — aperta e esquenta: é a seção do prejuízo possível. */
   custo: '#191312',
   /** O método — primeiro viés verde: aqui a marca começa a responder. */
-  metodo: '#1a1d17',
+  metodo: '#141c11',
   /** Do link ao laudo. */
   processo: '#181a19',
-  /** Dois perfis. */
-  publico: '#1e1c1d',
+  /** Dois perfis — viés âmbar/laranja: convite direto, chama pra ação. */
+  publico: '#241a10',
   /** Da memória pro sistema — viés frio: é a seção da bagunça. */
   ruido: '#15141b',
   /** Agente SNIPER — verde mais fundo, o ponto mais "máquina" da página. */
