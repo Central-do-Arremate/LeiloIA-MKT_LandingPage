@@ -14,7 +14,7 @@ const Passos = lazy(() => import('./components/sections/Passos'))
 const Perfis = lazy(() => import('./components/sections/Perfis'))
 const Memoria = lazy(() => import('./components/sections/Memoria'))
 const Sniper = lazy(() => import('./components/sections/Sniper'))
-const Inventario = lazy(() => import('./components/sections/Inventario'))
+// const Inventario = lazy(() => import('./components/sections/Inventario'))
 const Planos = lazy(() => import('./components/sections/Planos'))
 const Confianca = lazy(() => import('./components/sections/Confianca'))
 const Resultados = lazy(() => import('./components/sections/Resultados'))
@@ -46,7 +46,7 @@ const SECTIONS: { Component: ComponentType; tone: string; band?: ComponentType }
   { Component: Perfis, tone: TONE.publico },
   { Component: Memoria, tone: TONE.ruido },
   { Component: Sniper, tone: TONE.agente },
-  { Component: Inventario, tone: TONE.entrega },
+  // { Component: Inventario, tone: TONE.entrega },
   { Component: Planos, tone: TONE.oferta },
   { Component: Confianca, tone: TONE.prova },
   { Component: Resultados, tone: TONE.resultado },
