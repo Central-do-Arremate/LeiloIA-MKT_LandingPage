@@ -1,23 +1,8 @@
-import { motion } from 'framer-motion'
-import type { ReactNode } from 'react'
-
-interface AnimatedSectionProps {
-  children: ReactNode
-  className?: string
-  delay?: number
-  y?: number
-}
-
-export default function AnimatedSection({ children, className = '', delay = 0, y = 28 }: AnimatedSectionProps) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.div>
-  )
-}
+/**
+ * Nome antigo do <Reveal>.
+ *
+ * As 19 seções importam `AnimatedSection`; reexportar aqui faz todas herdarem
+ * o gatilho novo (ver hooks/useReveal) sem um commit que toca 19 arquivos só
+ * pra trocar um identificador. Em seções novas, importe `motion/Reveal`.
+ */
+export { default } from './motion/Reveal'

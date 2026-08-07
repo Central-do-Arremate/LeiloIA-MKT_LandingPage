@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SIGNUP_URL } from '../config/links'
+import { pushEvent } from '../lib/tracking'
 
 /**
  * CTA fixo no rodapé, só em telas pequenas e só depois que o hero (com o CTA
@@ -30,6 +31,9 @@ export default function MobileCtaBar() {
         >
           <a
             href={SIGNUP_URL}
+            data-cta="mobile-bar"
+            data-signup=""
+            onClick={() => pushEvent('cta_click', { cta: 'mobile-bar' })}
             className="block rounded-xl bg-leilo-go py-3.5 text-center font-euro text-base font-bold uppercase tracking-wide text-leilo-base shadow-go-glow"
           >
             Avaliar meu próximo carro

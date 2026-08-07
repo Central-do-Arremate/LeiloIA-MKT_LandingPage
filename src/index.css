@@ -6,9 +6,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Eurostile — a display de verdade da marca, os mesmos arquivos que o app
+   serve em ia.centraldoarremate.com.br. Antes a LP rodava só com Oswald, que
+   no app é apenas o fallback da pilha `euro`: a campanha aparecia com a letra
+   substituta enquanto o produto aparecia com a certa. Oswald continua na
+   pilha, agora no papel que sempre teve. */
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/fonts/eurostile-light-fixed.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/eurostile-normal-fixed.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/eurostile-heavy.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/assets/fonts/eurostile-heavy.otf') format('opentype');
+}
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  /* Âncora é salto instantâneo, de propósito — não há `scroll-behavior:
+     smooth` aqui.
+   *
+   * Duas tentativas de scroll conduzido caíram antes desta. O Lenis animava
+   * internamente sem mover o documento: clicar em "Planos" não ia a lugar
+   * nenhum. O `scroll-behavior: smooth` nativo funcionava, mas esta página
+   * tem 19.000px — a animação do Chrome escala com a distância, e o salto
+   * até os planos levava vários segundos rolando sozinho. Quem clica em
+   * "Planos" quer estar nos planos.
+   *
+   * O que sobrou não tem modo de falha e é o comportamento certo pro tamanho
+   * desta página. */
+
+  /* Desconta o cabeçalho fixo em qualquer destino de âncora — resposta nativa
+     pro problema que antes exigia calcular offset no JS. Sem isso o título do
+     destino nasce embaixo do cabeçalho. */
+  [id] {
+    scroll-margin-top: 6.5rem;
   }
 
   body {
@@ -17,5 +67,20 @@
 
   ::selection {
     @apply bg-leilo-go text-leilo-base;
+  }
+
+  /* Foco visível em qualquer coisa focável, sem depender de cada componente
+     lembrar de declarar. Verde da marca, com offset pra não colar na borda. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-leilo-go/70 ring-offset-2 ring-offset-leilo-base;
+  }
+}
+
+@layer utilities {
+  /* Todo número da página é Martian Mono — mesma regra do app (`.num`), pra
+     que preço, timestamp e leitura de laudo tenham a mesma voz. */
+  .num {
+    font-family: theme('fontFamily.mono');
+    font-variant-numeric: tabular-nums;
   }
 }

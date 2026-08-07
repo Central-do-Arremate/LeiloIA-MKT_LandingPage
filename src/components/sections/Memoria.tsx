@@ -1,5 +1,6 @@
-import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
+import Reveal from '../motion/Reveal'
+import RevealGroup, { RevealItem } from '../motion/RevealGroup'
 import Container from '../Container'
 import { brand } from '../brand'
 import { LEAD } from '../type'
@@ -15,32 +16,39 @@ export default function Memoria() {
         <ChapterHead eyebrow={MEMORIA.eyebrow} title={MEMORIA.title} headingId="memoria-heading" />
 
         <div className="mt-10 grid grid-cols-1 items-start gap-10 md:mt-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <AnimatedSection delay={0.1} className="flex flex-col gap-6">
+          <RevealGroup stagger={0.1} className="flex flex-col gap-6">
             {MEMORIA.paragraphs.map((p) => (
-              <p key={p.slice(0, 24)} className={LEAD}>
+              <RevealItem key={p.slice(0, 24)} className={LEAD}>
                 {brand(p)}
-              </p>
+              </RevealItem>
             ))}
-          </AnimatedSection>
+          </RevealGroup>
 
-          {/* As anotações soltas que o produto aposenta. */}
-          <AnimatedSection delay={0.2}>
+          {/* As anotações soltas que o produto aposenta.
+              Os chips caem um a um: a bagunça se ACUMULANDO na frente do
+              leitor é o argumento da seção. Aparecer tudo pronto seria só um
+              amontoado; em cascata, é a semana dele. */}
+          <Reveal delay={0.15}>
             <div className="relative rounded-2xl border border-dashed border-white/15 p-6 sm:p-8">
-              <div className="flex flex-wrap gap-3">
+              <RevealGroup stagger={0.08} className="flex flex-wrap gap-3">
                 {MEMORIA.chips.map((chip, i) => (
-                  <span
-                    key={chip}
-                    className={`inline-block rounded-md border border-white/10 bg-leilo-panel px-3 py-2 font-mono text-xs text-white/60 ${CHIP_TILT[i % CHIP_TILT.length]}`}
-                  >
-                    {chip}
-                  </span>
+                  // A inclinação fica num filho, não no RevealItem: o framer
+                  // escreve `transform` inline pra animar o y, e isso apagaria
+                  // o `rotate` que vem da classe do Tailwind.
+                  <RevealItem key={chip} y={8}>
+                    <span
+                      className={`inline-block rounded-md border border-white/10 bg-leilo-panel px-3 py-2 font-mono text-xs text-white/60 ${CHIP_TILT[i % CHIP_TILT.length]}`}
+                    >
+                      {chip}
+                    </span>
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealGroup>
               <p className="mt-6 text-center font-mono text-[0.65rem] uppercase tracking-[0.2em] text-leilo-stop/80">
                 ── sua memória, três dias depois ──
               </p>
             </div>
-          </AnimatedSection>
+          </Reveal>
         </div>
       </Container>
     </section>

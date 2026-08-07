@@ -1,4 +1,5 @@
-import AnimatedSection from '../AnimatedSection'
+import Reveal from '../motion/Reveal'
+import RevealGroup, { RevealItem } from '../motion/RevealGroup'
 import Container from '../Container'
 import { brand } from '../brand'
 import { H2, TAG } from '../type'
@@ -8,7 +9,7 @@ export default function Aviso() {
   return (
     <section aria-labelledby="aviso-heading" className="py-16 sm:py-20 md:py-24">
       <Container className="max-w-4xl">
-        <AnimatedSection>
+        <Reveal>
           <div className="rounded-2xl border border-white/15 p-6 sm:p-10">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className={`${TAG} text-leilo-stop`}>{AVISO.header}</p>
@@ -23,20 +24,23 @@ export default function Aviso() {
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85">{AVISO.intro}</p>
 
-            <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            {/* Cascata curta e rápida aqui. É uma lista de cuidados, não uma
+                vitrine: o ritmo serve pra dar peso a cada item, e um stagger
+                lento faria a seção do risco parecer publicidade. */}
+            <RevealGroup stagger={0.04} className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {AVISO.items.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-white/80">
+                <RevealItem key={item} y={8} className="flex items-start gap-2.5 text-sm text-white/80">
                   <span aria-hidden="true" className="mt-[0.4rem] h-1 w-3 flex-shrink-0 bg-leilo-go/70" />
                   {brand(item)}
-                </li>
+                </RevealItem>
               ))}
-            </ul>
+            </RevealGroup>
 
             <p className="mt-8 border-t border-white/[0.08] pt-6 text-sm leading-relaxed text-leilo-muted">
               {AVISO.footer}
             </p>
           </div>
-        </AnimatedSection>
+        </Reveal>
       </Container>
     </section>
   )

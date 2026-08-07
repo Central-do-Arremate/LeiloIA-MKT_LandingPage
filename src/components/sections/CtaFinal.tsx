@@ -53,7 +53,9 @@ export default function CtaFinal() {
 
         <AnimatedSection delay={0.15} className="mt-10 w-full max-w-xl">
           {/* No botão o verde da marca não cabe: o próprio botão já é verde. */}
-          <CtaButton href={SIGNUP_URL}>{CTA_FINAL.cta}</CtaButton>
+          <CtaButton href={SIGNUP_URL} dataCta="cta-final">
+            {CTA_FINAL.cta}
+          </CtaButton>
         </AnimatedSection>
 
         <AnimatedSection delay={0.25}>

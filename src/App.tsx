@@ -1,12 +1,17 @@
-import { lazy, Suspense, type ComponentType } from 'react'
+import { lazy, Suspense, useEffect, type ComponentType } from 'react'
 import Hero from './components/sections/Hero'
 import Footer from './components/Footer'
 import CampaignWall from './components/CampaignWall'
 import MobileCtaBar from './components/MobileCtaBar'
 import PhotoBand from './components/PhotoBand'
 import ScrollBackdrop from './components/ScrollBackdrop'
+import SiteHeader from './components/chrome/SiteHeader'
+import ActOpener from './components/chrome/ActOpener'
+import ActTicker from './components/chrome/ActTicker'
 import { CAMPAIGN_DISABLED } from './config/campaign'
 import { TONE } from './config/tones'
+import { ACTS } from './config/acts'
+import { enrichSignupLinks } from './lib/tracking'
 
 const ContaDoLote = lazy(() => import('./components/sections/ContaDoLote'))
 const Metodo = lazy(() => import('./components/sections/Metodo'))
@@ -14,7 +19,7 @@ const Passos = lazy(() => import('./components/sections/Passos'))
 const Perfis = lazy(() => import('./components/sections/Perfis'))
 const Memoria = lazy(() => import('./components/sections/Memoria'))
 const Sniper = lazy(() => import('./components/sections/Sniper'))
-// const Inventario = lazy(() => import('./components/sections/Inventario'))
+const Inventario = lazy(() => import('./components/sections/Inventario'))
 const Planos = lazy(() => import('./components/sections/Planos'))
 const Confianca = lazy(() => import('./components/sections/Confianca'))
 const Resultados = lazy(() => import('./components/sections/Resultados'))
@@ -34,31 +39,59 @@ function SectionFallback() {
   return <div className="h-[60vh] w-full" aria-hidden="true" />
 }
 
+interface Section {
+  Component: ComponentType
+  tone: string
+  band?: ComponentType
+}
+
 /**
- * A ordem da página, com o tom que cada capítulo empresta ao fundo. O tom vale
- * cheio no centro da seção; a virada entre dois tons cai no meio do caminho —
- * é isso que faz a troca ler como escala e não como emenda. Ver config/tones.
+ * A página em cinco atos.
+ *
+ * Cada seção continua carregando o próprio `data-tone` — o <ScrollBackdrop>
+ * segue interpolando o fundo seção a seção, que é o mecanismo mais autoral da
+ * identidade. O que os atos acrescentam é a leitura: as mesmas 19 seções agora
+ * têm começo, meio e fim visíveis, com abertura e ticker marcando a fronteira.
+ *
+ * Ordem: os planos saíram do meio da leitura para o ato da oferta, depois da
+ * prova (Confiança, Léo, Comparação). Preço antes de autoridade é preço sem
+ * contexto. Quem já decidiu tem o CTA fixo no cabeçalho.
  */
-const SECTIONS: { Component: ComponentType; tone: string; band?: ComponentType }[] = [
-  { Component: ContaDoLote, tone: TONE.custo },
-  { Component: Metodo, tone: TONE.metodo },
-  { Component: Passos, tone: TONE.processo },
-  { Component: Perfis, tone: TONE.publico },
-  { Component: Memoria, tone: TONE.ruido },
-  { Component: Sniper, tone: TONE.agente },
-  // { Component: Inventario, tone: TONE.entrega },
-  { Component: Planos, tone: TONE.oferta },
-  { Component: Confianca, tone: TONE.prova },
-  { Component: Resultados, tone: TONE.resultado },
-  { Component: Leo, tone: TONE.autor, band: LeoBand },
-  { Component: Filosofia, tone: TONE.limite },
-  { Component: Comparacao, tone: TONE.contraste },
-  { Component: DoisLados, tone: TONE.lados },
-  { Component: Faq, tone: TONE.duvida },
-  { Component: Aviso, tone: TONE.alerta },
-  { Component: Manifesto, tone: TONE.virada },
-  { Component: Fechamento, tone: TONE.fechamento },
-  { Component: CtaFinal, tone: TONE.climax },
+const ACT_SECTIONS: Section[][] = [
+  // 01 · A conta — o custo que o lance não mostra.
+  [
+    { Component: ContaDoLote, tone: TONE.custo },
+    { Component: Memoria, tone: TONE.ruido },
+    { Component: DoisLados, tone: TONE.lados },
+  ],
+  // 02 · O método — como a LeiloIA chega no número.
+  [
+    { Component: Metodo, tone: TONE.metodo },
+    { Component: Passos, tone: TONE.processo },
+    { Component: Sniper, tone: TONE.agente },
+    { Component: Filosofia, tone: TONE.limite },
+  ],
+  // 03 · A prova — de onde vem a autoridade.
+  [
+    { Component: Confianca, tone: TONE.prova },
+    { Component: Leo, tone: TONE.autor, band: LeoBand },
+    { Component: Comparacao, tone: TONE.contraste },
+    { Component: Resultados, tone: TONE.resultado },
+  ],
+  // 04 · A oferta — o que você recebe e quanto custa.
+  [
+    { Component: Perfis, tone: TONE.publico },
+    { Component: Inventario, tone: TONE.entrega },
+    { Component: Planos, tone: TONE.oferta },
+    { Component: Fechamento, tone: TONE.fechamento },
+  ],
+  // 05 · A decisão — o que ainda pesa antes de assinar.
+  [
+    { Component: Faq, tone: TONE.duvida },
+    { Component: Aviso, tone: TONE.alerta },
+    { Component: Manifesto, tone: TONE.virada },
+    { Component: CtaFinal, tone: TONE.climax },
+  ],
 ]
 
 /** Respiro fotográfico que abre o capítulo do Léo. */
@@ -77,6 +110,12 @@ function LeoBand() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Depois da hidratação, para o href estático do HTML e o do cliente
+    // baterem. Ver lib/tracking.
+    enrichSignupLinks()
+  }, [])
+
   if (CAMPAIGN_DISABLED) {
     return <CampaignWall />
   }
@@ -84,6 +123,7 @@ export default function App() {
   return (
     <>
       <ScrollBackdrop />
+      <SiteHeader />
 
       <a
         href="#main-content"
@@ -97,13 +137,27 @@ export default function App() {
       </div>
 
       <main id="main-content">
-        {SECTIONS.map(({ Component, tone, band: Band }, i) => (
-          <div key={i} data-tone={tone}>
-            {Band && <Band />}
-            <Suspense fallback={<SectionFallback />}>
-              <Component />
-            </Suspense>
-          </div>
+        {ACTS.map((act, actIndex) => (
+          <section key={act.n} aria-label={`Ato ${act.n} — ${act.name}`}>
+            <ActOpener act={act} />
+
+            {ACT_SECTIONS[actIndex].map(({ Component, tone, band: Band }, i) => (
+              <div key={i} data-tone={tone}>
+                {Band && <Band />}
+                <Suspense fallback={<SectionFallback />}>
+                  <Component />
+                </Suspense>
+              </div>
+            ))}
+
+            {/* O ticker fecha o ato. Verde cheio nos atos que afirmam; hairline
+                nos que falam de custo e de risco, onde gritar seria errado. */}
+            <ActTicker
+              items={act.ticker}
+              label={`Destaques do ato ${act.n}`}
+              variant={act.n === '01' || act.n === '05' ? 'line' : 'go'}
+            />
+          </section>
         ))}
       </main>
 

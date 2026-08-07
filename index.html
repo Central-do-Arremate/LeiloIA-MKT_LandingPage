@@ -80,6 +80,23 @@
         }
       }
     </script>
+
+    <!-- Sem JS, o HTML prerenderizado continua legível.
+
+         As revelações por scroll do Framer Motion saem no HTML estático já com
+         `opacity:0` inline — é o estado inicial delas. Com JS isso dura meio
+         segundo; sem JS dura pra sempre, e a página servida seria só os
+         títulos sobre um fundo vazio. `!important` porque o zero está no
+         atributo style do elemento, e regra de folha não ganha de inline sem
+         ele. -->
+    <noscript>
+      <style>
+        [style*='opacity: 0'] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body class="bg-leilo-base">
     <!-- Google Tag Manager (noscript) -->

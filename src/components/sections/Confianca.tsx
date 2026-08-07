@@ -1,5 +1,6 @@
-import AnimatedSection from '../AnimatedSection'
 import ChapterHead from '../ChapterHead'
+import Reveal from '../motion/Reveal'
+import RevealGroup, { RevealItem } from '../motion/RevealGroup'
 import Container from '../Container'
 import { brand } from '../brand'
 import { READOUT, TAG } from '../type'
@@ -16,11 +17,17 @@ export default function Confianca() {
           headingId="confianca-heading"
         />
 
-        <AnimatedSection delay={0.15} className="mt-10 md:mt-14">
+        {/* A cascata mais literal da página: sete credenciais recebendo o
+            carimbo "Verificado" uma depois da outra. É a única lista onde o
+            ritmo do stagger É o argumento — a seção responde "posso confiar?"
+            mostrando a conferência acontecer, e não um bloco pronto. */}
+        <RevealGroup stagger={0.08} className="mt-10 md:mt-14">
           <ul className="overflow-hidden rounded-2xl border border-white/[0.08] bg-leilo-panel/40">
             {CONFIANCA.rows.map((row) => (
-              <li
+              <RevealItem
                 key={row}
+                as="li"
+                y={8}
                 className="flex items-center justify-between gap-4 border-b border-white/[0.06] px-5 py-4 last:border-0 sm:px-6"
               >
                 <span className="text-[0.9375rem] font-medium text-white/90 sm:text-base">{row}</span>
@@ -28,13 +35,13 @@ export default function Confianca() {
                   <span aria-hidden="true">✓</span>
                   {CONFIANCA.verified}
                 </span>
-              </li>
+              </RevealItem>
             ))}
           </ul>
-        </AnimatedSection>
+        </RevealGroup>
 
         {/* Assinatura da lista: quem responde por esses itens tem rosto. */}
-        <AnimatedSection delay={0.2} className="mt-6">
+        <Reveal delay={0.2} className="mt-6">
           <div className="flex items-center gap-5 rounded-2xl border border-leilo-go/25 bg-leilo-go/[0.04] p-4 sm:p-5">
             {/* O retrato original é de corpo inteiro; o zoom com origem no
                 rosto é o que faz a assinatura ler como assinatura. */}
@@ -57,13 +64,13 @@ export default function Confianca() {
               </p>
             </div>
           </div>
-        </AnimatedSection>
+        </Reveal>
 
-        <AnimatedSection delay={0.25}>
+        <Reveal delay={0.25}>
           <p className="mx-auto mt-8 max-w-3xl border-l-2 border-leilo-go/60 pl-4 text-sm leading-relaxed text-leilo-muted">
             {brand(CONFIANCA.honesty)}
           </p>
-        </AnimatedSection>
+        </Reveal>
       </Container>
     </section>
   )

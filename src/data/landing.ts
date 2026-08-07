@@ -8,6 +8,9 @@ export const HERO = {
   eyebrow: 'IA treinada por quem já fez 350+ arremates',
   h1Lines: ['Avalie carros de leilão', 'em menos de 1 minuto.'] as const,
   greenLine: 1, // índice da linha que leva o verde-assinatura
+  // Chip que cavalga a Linha do Teto. Nomeia o conceito que o produto entrega
+  // logo na abertura, sem ainda mostrar número nenhum.
+  tetoTag: 'O teto — seu lance máximo com lucro',
   sub: 'Menos tempo fazendo contas. Menos risco de esquecer custos importantes. Mais clareza pra decidir se vale a pena arrematar.',
   lead: 'Uma inteligência artificial treinada durante mais de um ano com a metodologia de Leonardo Ribeiro — 7+ anos de mercado, 350+ arremates, validada por 100+ mentorados. Ela identifica custos, busca peças, avalia o risco e organiza suas oportunidades antes de você decidir quanto oferecer.',
   ctaPrimary: 'Quero avaliar meu próximo carro',
@@ -39,7 +42,10 @@ export const CONTA = {
     'Nenhum ponto importante esquecido',
     'Histórico das avaliações realizadas',
     'Oportunidades organizadas num só lugar',
-    'Agente SNIPER pra qualquer dúvida',
+    // Qualificado de propósito: o Sniper é dos planos Profissional e
+    // Especialista (o Operador não concede). Prometer sem ressalva aqui e
+    // entregar bloqueado lá dentro é a pior ordem possível de descobrir.
+    'Agente SNIPER nos planos Profissional e Especialista',
     'Lembretes dos leilões avaliados',
   ],
   cta: 'Quero mais segurança antes do lance',
@@ -209,6 +215,14 @@ export interface Plan {
   id: string
   name: string
   price: string
+  /**
+   * O mesmo preço em centavos, para o cálculo do cupom.
+   *
+   * Duplicar o valor incomoda, mas a alternativa é fazer parse de "R$ 19,90"
+   * em tempo de render — string formatada virando número é onde o dinheiro
+   * quebra em silêncio. Os dois campos andam juntos: mudou um, muda o outro.
+   */
+  priceCents: number
   /** Preço dividido pela franquia mensal — a régua de comparação entre planos. */
   perAnalysis: string
   /** Limites de uso, como aparecem no app. */
@@ -226,6 +240,7 @@ export const PLANOS: Plan[] = [
     id: 'operador',
     name: 'Operador',
     price: 'R$ 19,90',
+    priceCents: 1990,
     perAnalysis: 'R$ 3,98 por análise',
     quota: '5 análises por mês',
     desc: 'Para quem está começando e avalia poucos lotes por mês.',
@@ -234,7 +249,7 @@ export const PLANOS: Plan[] = [
       'Histórico de avaliações',
       'Links de compra das peças',
       'Integração com Google Agenda',
-      'Créditos avulsos com 25% de desconto',
+      'Créditos avulsos com 30% de desconto',
       'Suporte pela plataforma',
     ],
     cta: 'Começar com o Operador',
@@ -243,6 +258,7 @@ export const PLANOS: Plan[] = [
     id: 'profissional',
     name: 'Profissional',
     price: 'R$ 59,90',
+    priceCents: 5990,
     perAnalysis: 'R$ 3,00 por análise',
     quota: '20 análises por mês',
     desc: 'Para quem acompanha oportunidades com frequência e precisa de volume.',
@@ -252,7 +268,7 @@ export const PLANOS: Plan[] = [
       'Histórico de avaliações',
       'Links de compra das peças',
       'Integração com Google Agenda',
-      'Créditos avulsos com 40% de desconto',
+      'Créditos avulsos com 45% de desconto',
     ],
     badge: 'Especialista recomenda',
     highlight: true,
@@ -262,6 +278,7 @@ export const PLANOS: Plan[] = [
     id: 'especialista',
     name: 'Especialista',
     price: 'R$ 197,90',
+    priceCents: 19790,
     perAnalysis: 'R$ 1,98 por análise',
     quota: '100 análises por mês',
     desc: 'Para profissionais e investidores que analisam um volume alto de veículos.',
@@ -283,8 +300,13 @@ export const PLANOS_META = {
   note: 'Assinatura mensal, renova todo mês. Sem fidelidade — cancele quando quiser.',
   bonusTag: 'Bônus',
   bonusNote: 'Agente SNIPER incluso nos planos Profissional e Especialista.',
+  // Percentuais conferidos contra a tela de cadastro do app em 07/08/2026.
+  // Estavam 25/40/70 aqui e 30/45/70 lá — a LP prometia menos do que o produto
+  // entrega. Se mudarem no app, mudam aqui.
   creditsNote:
-    'Acabou a franquia? Assinante compra análises avulsas com desconto: 25% no Operador, 40% no Profissional e 70% no Especialista.',
+    'Acabou a franquia? Assinante compra análises avulsas com desconto: 30% no Operador, 45% no Profissional e 70% no Especialista.',
+  /** Disclosure do cupom. Mesma frase do card de plano no app. */
+  couponNote: 'Desconto no primeiro mês; depois o valor cheio do plano, cobrado mensalmente.',
 }
 
 // ── S10 · Confiança ─────────────────────────────────────────────────────────
