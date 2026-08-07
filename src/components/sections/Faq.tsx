@@ -7,11 +7,22 @@ import { brand } from '../brand'
 import { FAQ } from '../../data/landing'
 import { WHATSAPP_URL } from '../../config/links'
 
+const FAQ_SCHEMA = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+}).replace(/</g, '\\u003c')
+
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
     <section aria-labelledby="faq-heading" className="py-16 sm:py-20 md:py-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: FAQ_SCHEMA }} />
       <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div>
           <ChapterHead eyebrow={FAQ.eyebrow} title={FAQ.title} headingId="faq-heading" titleMax="max-w-md" />

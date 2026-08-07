@@ -20,9 +20,11 @@ export default {
       fontFamily: {
         // Display: Oswald (fallback web do Eurostile usado no app).
         // Corpo: Inter. Readout numérico/máquina: Martian Mono.
-        euro: ['Oswald', 'Inter', 'sans-serif'],
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ["'Martian Mono'", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        // Self-hosted via @fontsource-variable (ver src/index.css) — nomes
+        // "Variable" são os registrados por esses pacotes.
+        euro: ["'Oswald Variable'", "'Inter Variable'", 'sans-serif'],
+        sans: ["'Inter Variable'", '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ["'Martian Mono Variable'", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       screens: {
         xs: '400px',

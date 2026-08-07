@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mkt-ia.centraldoarremate.com.br/sitemap.xml

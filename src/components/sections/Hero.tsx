@@ -46,18 +46,15 @@ export default function Hero() {
           {brand(HERO.eyebrow)}
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-6 text-center font-euro text-4xl font-bold uppercase leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]"
-        >
+        {/* Sem motion aqui de propósito: é o candidato mais provável a LCP,
+            então precisa pintar no primeiro frame, sem esperar fade-in JS. */}
+        <h1 className="mt-6 text-center font-euro text-4xl font-bold uppercase leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]">
           {HERO.h1Lines.map((line, i) => (
             <span key={line} className={`block text-balance ${i === HERO.greenLine ? 'text-leilo-go' : ''}`}>
               {line}
             </span>
           ))}
-        </motion.h1>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 24 }}

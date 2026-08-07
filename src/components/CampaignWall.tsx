@@ -1,6 +1,9 @@
+import { useEffect } from 'react'
 import { ArrowUpRight, SearchX } from 'lucide-react'
 import { brand } from './brand'
 import { CENTRAL_DO_ARREMATE_URL, LEILOIA_URL } from '../config/campaign'
+
+export const CAMPAIGN_WALL_TITLE = 'Campanha não encontrada | LeiloIA'
 
 const LINKS = [
   {
@@ -16,6 +19,17 @@ const LINKS = [
 ]
 
 export default function CampaignWall() {
+  // Fallback pro caso de servir esta página sem passar pelo prerender (ex.:
+  // `vite preview` local). O prerender já cospe noindex + title certos no
+  // HTML estático — isso aqui só cobre o caminho sem SSR.
+  useEffect(() => {
+    document.title = CAMPAIGN_WALL_TITLE
+    const meta = document.createElement('meta')
+    meta.name = 'robots'
+    meta.content = 'noindex, nofollow'
+    document.head.appendChild(meta)
+  }, [])
+
   return (
     <div className="relative grid min-h-screen place-items-center overflow-hidden bg-leilo-base px-6 py-12">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-leilo-go/10 blur-[120px]" />

@@ -1,3 +1,7 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/oswald';
+@import '@fontsource-variable/martian-mono';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
